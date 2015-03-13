@@ -1,25 +1,8 @@
-Full name:  __Jincheng Cao____________
-SEAS login: ______caoj________
+This web server can be invoked from the command line, taking the following parameters, in this order:
+  
+1. Port to listen for connections on. Port 80 is the default HTTP port, but it is often blocked by firewalls, so your server should be able to run on any other port (e.g., 8080).
+2. Root directory of the static web pages. For example, if this is set to the directory /var/www, a request for /mydir/index.html will return the file /var/www/mydir/index.html. (do not hard-code any part of the path in your code - your server needs to work on a different machine, which may have completely different directories!)
+So, for instance, java –cp workspace/hw2 edu.cis.upenn.edu.cis455.hw2.HttpServer 8080 /home/cis455/myweb should run the server. 
 
-Which features did you implement? 
-  (list features, or write 'Entire assignment')
-  Entire assignment(no extra-credit)
+This program will accept incoming GET and HEAD requests from a Web browser (such as the Firefox browser in the VM image), and it will make use of a thread pool (as discussed in class) to invoke a worker thread to process each request. The worker thread will parse the HTTP request, determine which file was requested (relative to the root directory specified above) and return the file. If a directory was requested, the request should return a listing of the files in the directory. The server should return the correct MIME types for some basic file formats, based on the extension (.jpg, .gif, .png, .txt, .html); keep in mind that image files must be sent in binary form -- not with println or equivalent -- otherwise the browser will not be able to read them. If a GET or HEAD request is made that is not a valid UNIX path specification, if no file is found, or if the file is not accessible, you should return the appropriate HTTP error. 
 
-Did you complete any extra-credit tasks? If so, which ones?
-  (list extra-credit tasks)
-  No
-Any special instructions for building and running your solution?
-  (include detailed instructions, or write 'None')
-  No
-Did you personally write _all_ the code you are submitting
-(other than code from the course web page)?
-  [YES ] Yes
-  [ ] No
-
-Did you copy any code from the Internet, or from classmates?
-  [ ] Yes
-  [NO ] No
-
-Did you collaborate with anyone on this assignment?
-  [ ] Yes
-  [NO ] No
